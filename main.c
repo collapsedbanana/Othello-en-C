@@ -67,3 +67,4 @@ int main () {
 
     return 0;
 }
+// pour choisir la couleur : https://gist.github.com/vratiu/9780109
