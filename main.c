@@ -19,12 +19,11 @@ void init_matrice (T_Othellier m) {
     for (i=0; i<Taille; i++)
         for (j=0; j<Taille; j++)
             m[i][j] = VIDE;
-
-    /* On place les 4 premiers pions */
-    m[Taille/2-1][Taille/2-1] = N;
-    m[Taille/2-1][Taille/2] = B;
-    m[Taille/2][Taille/2-1] = B;
-    m[Taille/2][Taille/2] = N;
+    // Place the initial pieces on the board
+    m[3][3] = N;
+    m[3][4] = B;
+    m[4][3] = B;
+    m[4][4] = N;
 }
 
 /* Fonction pour afficher la grille */
@@ -67,5 +66,6 @@ int main () {
 
     return 0;
 }
+
 
 // pour choisir la couleur : https://gist.github.com/vratiu/9780109
