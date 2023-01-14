@@ -59,7 +59,7 @@ void afficher_Plateau (T_Othellier var) {
 }
 /* Fonction pour verifier qu'une case existe; ver et hor (vertical et horizontal */
 int case_existe (int hor, int ver) {
-    return ((ver>=0)&&(ver<N)&&(hor>=0)&&(hor<N));
+    return ((ver>=0) && (ver<N) && (hor>=0) && (hor<N));
     }
 int is_valid_move(T_Othellier var, int hor, int ver, int player) {
 int i, j;
@@ -70,7 +70,7 @@ int found = 0;
 
 for (i=-1;i<=1;i++) {
     for (j=-1;j<=1;j++) {
-        if(i==0&&j==0) {
+        if(i==0 && j==0) {
             continue;
 }
         int x = hor + i, y = ver + j;
@@ -80,14 +80,14 @@ for (i=-1;i<=1;i++) {
         if (var[x][y]!=opponent) {
                 continue;
 }
-while(x>=0&&x<Taille&&y>=0&&y<Taille) {
+while(x>=0 && x<Taille && y>=0 && y<Taille) {
         if (var[x][y]!=opponent) {
                 break;
 }
-    x += i;
-    y += j;
+    x + 1= i;
+    y + 1= j;
 }
-        if (x>=0&&x<Taille&&y>=0&&y<Taille&&var[x][y]==opponent) {
+        if (x>=0&&x<Taille && y>=0 && y<Taille && var[x][y]==opponent) {
         return 1;
         }
     }
