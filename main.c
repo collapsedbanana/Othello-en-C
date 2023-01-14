@@ -71,4 +71,3 @@ int main () {
 
 // pour choisir la couleur : https://gist.github.com/vratiu/9780109
 ============================================================================
-    //IA
