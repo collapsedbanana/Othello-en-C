@@ -87,7 +87,7 @@ while(x>=0 && x<Taille && y>=0 && y<Taille) {
     x + 1= i;
     y + 1= j;
 }
-        if (x>=0&&x<Taille && y>=0 && y<Taille && var[x][y]==opponent) {
+        if (x>=0 && x<Taille && y>=0 && y<Taille && var[x][y]==opponent) {
         return 1;
         }
     }
