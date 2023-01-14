@@ -57,7 +57,7 @@ void afficher_Plateau (T_Othellier var) {
         printf ("\n");
     }
 }
-/* Fonction pour verifier qu'une case existe */
+/* Fonction pour verifier qu'une case existe; ver et hor (vertical et horizontal */
 int case_existe (int hor, int ver) {
     return ((ver>=0)&&(ver<N)&&(hor>=0)&&(hor<N));
     }
