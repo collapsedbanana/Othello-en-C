@@ -48,15 +48,53 @@ void afficher_Plateau (T_Othellier var) {
         printf ("|");
         for (j=0; j<Taille; j++)
             if (var[i][j] == B)
-                printf ("\033[31m %c \033[0m|", var[i][j]); /* Les blancs en rouge */
+                printf ("\033[33m %c \033[0m|", var[i][j]); /* Les blancs en rouge */
             else
-                printf ("\033[34m %c \033[0m|", var[i][j]); /* Les noirs en bleu */
+                printf ("\033[31m %c \033[0m|", var[i][j]); /* Les noirs en bleu */
         printf (" %d\n+", i+1); /* on affecte puis on incrémente*/
         for (j=0; j<Taille; j++)
             printf ("---+");
         printf ("\n");
     }
 }
+/* Fonction pour verifier qu'une case existe */
+int case_existe (int hor, int ver) {
+    return ((ver>=0)&&(ver<N)&&(hor>=0)&&(hor<N));
+    }
+int is_valid_move(T_Othellier var, int hor, int ver, int player) {
+int i, j;
+char opponent;
+        if(player == 1) opponent = N;
+    else opponent = B;
+int found = 0;
+
+for (i=-1;i<=1;i++) {
+    for (j=-1;j<=1;j++) {
+        if(i==0&&j==0) {
+            continue;
+}
+        int x = hor + i, y = ver + j;
+            if (x<0||x>=Taille||y<0||y>=Taille) {
+                continue;
+}
+        if (var[x][y]!=opponent) {
+                continue;
+}
+while(x>=0&&x<Taille&&y>=0&&y<Taille) {
+        if (var[x][y]!=opponent) {
+                break;
+}
+    x += i;
+    y += j;
+}
+        if (x>=0&&x<Taille&&y>=0&&y<Taille&&var[x][y]==opponent) {
+        return 1;
+        }
+    }
+}
+return 0;
+}
+
 int main () {
     T_Othellier var;
     int lig, col, joueur = 1;
@@ -67,6 +105,8 @@ int main () {
 
     return 0;
 }
+
+
 
 
 // pour choisir la couleur : https://gist.github.com/vratiu/9780109
