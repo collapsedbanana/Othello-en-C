@@ -4,8 +4,8 @@
 #define Taille 8
 
 /* Pions du jeu */
-#define N 'X'  /* joueur 1 */
-#define B 'O' /* joueur 2 */
+#define N 'O'  /* joueur 1 */
+#define B '0' /* joueur 2 */
 
 #define VIDE ' '
 
@@ -48,9 +48,9 @@ void afficher_Plateau (T_Othellier var) {
         printf ("|");
         for (j=0; j<Taille; j++)
             if (var[i][j] == B)
-                printf ("\033[33m %c \033[0m|", var[i][j]); /* Les blancs en rouge */
+                printf ("\033[37m %c \033[0m|", var[i][j]); /* Les blancs en blanc*/
             else
-                printf ("\033[31m %c \033[0m|", var[i][j]); /* Les noirs en bleu */
+                printf ("\033[31m %c \033[0m|", var[i][j]); /* Les noirs en rouge */
         printf (" %d\n+", i+1); /* on affecte puis on incrémente*/
         for (j=0; j<Taille; j++)
             printf ("---+");
@@ -107,7 +107,3 @@ int main () {
 }
 
 
-
-
-// pour choisir la couleur : https://gist.github.com/vratiu/9780109
-============================================================================
