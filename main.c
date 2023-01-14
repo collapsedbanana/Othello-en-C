@@ -51,7 +51,7 @@ void afficher_Plateau (T_Othellier var) {
                 printf ("\033[31m %c \033[0m|", var[i][j]); /* Les blancs en rouge */
             else
                 printf ("\033[34m %c \033[0m|", var[i][j]); /* Les noirs en bleu */
-        printf (" %d\n+", i+1);
+        printf (" %d\n+", i+1); /* on affecte puis on incrémente*/
         for (j=0; j<Taille; j++)
             printf ("---+");
         printf ("\n");
