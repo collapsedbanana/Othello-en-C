@@ -8,6 +8,7 @@
 #define B '0' /* joueur 2 */
 
 #define VIDE ' '
+/*
 //affiche le plateau avec les 4 premiers pions
 void init_Plateau (T_Othellier var);
 //affiche la grille et les lettres de A à H
@@ -26,7 +27,7 @@ void coordonnees_coup (T_Othellier var, int *hor, int *ver, int joueur);
 int partie_fini(T_Othellier var);
 //mais en place les rêgles de l'othello
 void jouer_coup(T_Othellier var, int hor, int ver, int joueur);
-
+*/
 
 /* Type du plateau de jeu */
 typedef char T_Othellier[Taille][Taille];
