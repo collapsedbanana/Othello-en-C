@@ -110,6 +110,18 @@ int joueur_suivant (int joueur) {
     }
 }
 
+void count_pieces(T_Othellier var, int black_count, intwhite_count) {
+    int i, j;
+    for (i=0; i<Taille; i++) {
+        for (j=0; j<Taille; j++) {
+            if (var[i][j] == N) {
+                (black_count)++;
+            } else if (var[i][j] == B) {
+                (white_count)++;
+            }
+        }
+    }
+}
 
 
 int main () {
