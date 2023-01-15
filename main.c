@@ -129,7 +129,7 @@ void coordonnées_coup (T_plateau Taille, int *hor, int *ver, int joueur) {
    }
     (*hor) = c - 'A';
     scanf ("%d", ver);
-    (*ver)--; //pas compris demander à chat gpt
+    (*ver)--; 
 }
 
 
