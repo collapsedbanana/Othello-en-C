@@ -90,7 +90,7 @@ while(x>=0 && x<Taille && y>=0 && y<Taille) {
 }
 return 0;
 }
-int verifie_coup(T_Othellier var, int joueur) {
+int dernier_coup(T_Othellier var, int joueur) {
     for (int i = 0; i < Taille; i++) {
         for (int j = 0; j < Taille; j++) {
             if (mouv_valid(var, i, j, joueur)) {
