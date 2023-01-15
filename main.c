@@ -117,7 +117,7 @@ int minuscule(char c) {
 
 }
 
-void coordonnées_coup (T_Othellier Taille, int *hor, int *ver, int joueur) {
+void coordonnées_coup (T_plateau Taille, int *hor, int *ver, int joueur) {
     char c;
     int input_valid = 0;
     while (input_valid == 0) {
@@ -132,7 +132,7 @@ void coordonnées_coup (T_Othellier Taille, int *hor, int *ver, int joueur) {
             (*hor) = c - 'A';
             scanf ("%d", ver);
             if (*ver >= 1 && *ver <= 8) {
-                (*ver)--;
+                (*ver)--; 
                 input_valid = 1;
             } else {
                 printf("Invalid input, please enter a number between 1 and 8\n");
@@ -142,6 +142,7 @@ void coordonnées_coup (T_Othellier Taille, int *hor, int *ver, int joueur) {
         }
     }
 }
+
 
 int main () {
     T_Othellier var;
