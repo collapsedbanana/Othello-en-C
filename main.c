@@ -94,7 +94,7 @@ while(x>=0 && x<Taille && y>=0 && y<Taille) {
 }
 return 0;
 }
-int can_play_again(T_Othellier var, int joueur) {
+int vérifie_nbr_coups(T_Othellier var, int joueur) {
     for (int i = 0; i < Taille; i++) {
         for (int j = 0; j < Taille; j++) {
             if (is_valid_move(var, i, j, joueur)) {
