@@ -57,11 +57,7 @@ void afficher_Plateau (T_Othellier var) {
         printf ("\n");
     }
 }
-/* Fonction pour verifier qu'une case existe; ver et hor (vertical et horizontal */
-int case_existe (int hor, int ver) {
-    return ((ver>=0) && (ver<N) && (hor>=0) && (hor<N));
-    }
-int is_valid_move(T_Othellier var, int hor, int ver, int joueur) {
+int mouv_valid(T_Othellier var, int hor, int ver, int joueur) {
 int i, j;
 char adversaire;
         if(joueur == 1) adversaire = N;
@@ -94,10 +90,10 @@ while(x>=0 && x<Taille && y>=0 && y<Taille) {
 }
 return 0;
 }
-int vérifie_nbr_coups(T_Othellier var, int joueur) {
+int vérifie_coup(T_Othellier var, int joueur) {
     for (int i = 0; i < Taille; i++) {
         for (int j = 0; j < Taille; j++) {
-            if (is_valid_move(var, i, j, joueur)) {
+            if (mouv_valid(var, i, j, joueur)) {
                 return 1;
             }
         }
@@ -119,7 +115,7 @@ int joueur_suivant (int joueur) {
 
 int main () {
     T_Othellier var;
-    int lig, col, joueur = 1;
+
 
     /* Initialisation du jeu */
     init_Plateau(var);
