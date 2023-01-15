@@ -109,17 +109,6 @@ int joueur_suivant (int joueur) {
         return 1;
     }
 }
-int game_over(T_Othellier var, int black_count, int white_count) {
-    if (black_count > white_count) {
-        printf("Player 1 wins!\n");
-    } else if (white_count > black_count) {
-        printf("Player 2 wins!\n");
-    } else {
-        printf("It's a tie!\n");
-    }
-    afficher_Plateau(var);
-    return 1;
-}
 
 
 
