@@ -248,6 +248,6 @@ while(verifie_coup(plateau, joueur)) {
 }
 
 return 0;
-
 }
+
 
