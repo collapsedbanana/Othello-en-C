@@ -117,7 +117,7 @@ int minuscule(char c) {
 
 }
 
-void coordonnées_coup (T_plateau Taille, int *hor, int *ver, int joueur) {
+void coordonnées_coup (T_Othellier Taille, int *hor, int *ver, int joueur) {
     char c;
     int input_valid = 0;
     while (input_valid == 0) {
