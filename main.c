@@ -123,7 +123,17 @@ void count_pieces(T_Othellier var, int black_count, intwhite_count) {
         }
     }
 }
-
+/*
+int partie_terminee (T_Othellier var, int black_count, int white_count) {
+    /* Check if there are no more valid moves for either player */
+    if (dernier_coup(var, 1) == 0 && dernier_coup(var, 2) == 0) {
+        /* If there are no more valid moves, the game is over */
+        game_over(var, black_count, white_count);
+        return 1;
+    }
+    return 0;
+}
+*/
 
 int main () {
     T_Othellier var;
