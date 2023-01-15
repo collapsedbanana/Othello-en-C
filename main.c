@@ -61,11 +61,11 @@ void afficher_Plateau (T_Othellier var) {
 int case_existe (int hor, int ver) {
     return ((ver>=0) && (ver<N) && (hor>=0) && (hor<N));
     }
-int is_valid_move(T_Othellier var, int hor, int ver, int player) {
+int is_valid_move(T_Othellier var, int hor, int ver, int joueur) {
 int i, j;
-char opponent;
-        if(player == 1) opponent = N;
-    else opponent = B;
+char adversaire;
+        if(joueur == 1) adversaire = N;
+    else adversaire = B;
 int found = 0;
 
 for (i=-1;i<=1;i++) {
@@ -77,23 +77,45 @@ for (i=-1;i<=1;i++) {
             if (x<0||x>=Taille||y<0||y>=Taille) {
                 continue;
 }
-        if (var[x][y]!=opponent) {
+        if (var[x][y]!=adversaire) {
                 continue;
 }
 while(x>=0 && x<Taille && y>=0 && y<Taille) {
-        if (var[x][y]!=opponent) {
+        if (var[x][y]!=adversaire) {
                 break;
 }
-    x + 1= i;
-    y + 1= j;
+    x=x+i;
+    y=y+j;
 }
-        if (x>=0 && x<Taille && y>=0 && y<Taille && var[x][y]==opponent) {
+        if (x>=0 && x<Taille && y>=0 && y<Taille && var[x][y]==adversaire) {
         return 1;
         }
     }
 }
 return 0;
 }
+int can_play_again(T_Othellier var, int joueur) {
+    for (int i = 0; i < Taille; i++) {
+        for (int j = 0; j < Taille; j++) {
+            if (is_valid_move(var, i, j, joueur)) {
+                return 1;
+            }
+        }
+    }
+    return 0;
+}
+
+int joueur_suivant (int joueur) {
+    if (joueur == 1) {
+        return 2;
+    }
+    else {
+        return 1;
+    }
+}
+
+
+
 
 int main () {
     T_Othellier var;
@@ -105,5 +127,4 @@ int main () {
 
     return 0;
 }
-
 
