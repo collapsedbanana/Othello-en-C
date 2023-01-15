@@ -100,17 +100,6 @@ int verifie_coup(T_Othellier var, int joueur) {
     }
     return 0;
 }
-bool isLowercase(char c) {
-    if (c >= 'a' && c <= 'z') {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-
-
 int joueur_suivant (int joueur) {
     if (joueur == 1) {
         return 2;
@@ -119,15 +108,30 @@ int joueur_suivant (int joueur) {
         return 1;
     }
 }
-//avec le code ASCII, les majuscules sont de 65 à 90 et les minuscules de 97 à 122 on enlève 32 pour retourner à 90
-char convertToUpper(char c) {
+int isLowercase(char c) {
     if (c >= 'a' && c <= 'z') {
-        c = c - 32;
-    }
-    return c;
+        return 1;
+        }
+
+    return 0;
+
 }
 
-void choisir_coup (t_matrice m, int *lig, int *col, int joueur) {
+//avec le code ASCII, les majuscules sont de 65 à 90 et les minuscules de 97 à 122 on enlève 32 pour retourner à 90
+void coordonnées_coup (T_plateau Taille, int *hor, int *ver, int joueur) {
+     char c;
+    printf ("\nC'est au tour du joueur %d de jouer\n", joueur);
+    printf ("Choisissez une case (ex: A1) :\n");
+    scanf ("\n%c", &c);
+    /* On change les minuscules en majuscules */
+   if (isLowercase(c)==1){
+    c = c - 'a' + 'A';
+   }
+    (*hor) = c - 'A';
+    scanf ("%d", ver);
+    (*ver)--;
+}
+
 
 int main () {
     T_Othellier var;
