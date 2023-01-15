@@ -90,7 +90,7 @@ while(x>=0 && x<Taille && y>=0 && y<Taille) {
 }
 return 0;
 }
-int dernier_coup(T_Othellier var, int joueur) {
+int verifie_coup(T_Othellier var, int joueur) {
     for (int i = 0; i < Taille; i++) {
         for (int j = 0; j < Taille; j++) {
             if (mouv_valid(var, i, j, joueur)) {
@@ -100,6 +100,16 @@ int dernier_coup(T_Othellier var, int joueur) {
     }
     return 0;
 }
+bool isLowercase(char c) {
+    if (c >= 'a' && c <= 'z') {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
+
 
 int joueur_suivant (int joueur) {
     if (joueur == 1) {
@@ -109,31 +119,15 @@ int joueur_suivant (int joueur) {
         return 1;
     }
 }
+//avec le code ASCII, les majuscules sont de 65 à 90 et les minuscules de 97 à 122 on enlève 32 pour retourner à 90
+char convertToUpper(char c) {
+    if (c >= 'a' && c <= 'z') {
+        c = c - 32;
+    }
+    return c;
+}
 
-//printf  pour dire qui gagne
-void count_pieces(T_Othellier var, int black_count, intwhite_count) {
-    int i, j;
-    for (i=0; i<Taille; i++) {
-        for (j=0; j<Taille; j++) {
-            if (var[i][j] == N) {
-                (black_count)++;
-            } else if (var[i][j] == B) {
-                (white_count)++;
-            }
-        }
-    }
-}
-/*
-int partie_terminee (T_Othellier var, int black_count, int white_count) {
-    /* Check if there are no more valid moves for either player */
-    if (dernier_coup(var, 1) == 0 && dernier_coup(var, 2) == 0) {
-        /* If there are no more valid moves, the game is over */
-        game_over(var, black_count, white_count);
-        return 1;
-    }
-    return 0;
-}
-*/
+void choisir_coup (t_matrice m, int *lig, int *col, int joueur) {
 
 int main () {
     T_Othellier var;
