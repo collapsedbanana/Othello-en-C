@@ -8,6 +8,25 @@
 #define B '0' /* joueur 2 */
 
 #define VIDE ' '
+//affiche le plateau avec les 4 premiers pions
+void init_Plateau (T_Othellier var);
+//affiche la grille et les lettres de A à H
+void afficher_Plateau (T_Othellier var);
+//permet de savoir si un mouvement est autorisé(case vide ou occupée)
+int mouv_valid(T_Othellier var, int hor, int ver, int joueur);
+//appel la fonction int mouv_valide pour voir si on peut encore déplacer un pion
+int verifie_coup(T_Othellier var, int joueur);
+//fait passer le tours au prochain joueur
+int joueur_suivant (int joueur);
+//permet de savoir si on entre une minuscule dans l'executable
+int minuscule(char c);
+//place les pions en fonction des coordonnées 
+void coordonnees_coup (T_Othellier var, int *hor, int *ver, int joueur);
+//voit s'il reste encore des pions à joué du côté adverse et du joueur
+int partie_fini(T_Othellier var);
+//mais en place les rêgles de l'othello
+void jouer_coup(T_Othellier var, int hor, int ver, int joueur);
+
 
 /* Type du plateau de jeu */
 typedef char T_Othellier[Taille][Taille];
