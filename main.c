@@ -110,6 +110,7 @@ int joueur_suivant (int joueur) {
     }
 }
 
+//printf  pour dire qui gagne
 void count_pieces(T_Othellier var, int black_count, intwhite_count) {
     int i, j;
     for (i=0; i<Taille; i++) {
