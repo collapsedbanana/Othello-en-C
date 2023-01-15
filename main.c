@@ -142,6 +142,28 @@ void coordonnees_coup (T_Othellier var, int *hor, int *ver, int joueur) {
         }
     }
 }
+int partie_fini(T_Othellier var) {
+    int i, j;
+    int noir_count = 0, blanc_count = 0;
+    int vide_count = 0;
+    for (i = 0; i < Taille; i++) {
+        for (j = 0; j < Taille; j++) {
+            if (var[i][j] == N) {
+                noir_count++;
+            } else if (var[i][j] == B) {
+                blanc_count++;
+            } else if (var[i][j] == VIDE) {
+                vide_count++;
+            }
+        }
+    }
+    if (vide_count == 0 || (verifie_coup(var, 1) == 0 && verifie_coup(var, 2) == 0)) {
+        printf("La partie est finie! Le joueur noir a %d pions et le joueur blanc a %d pions.\n", noir_count, blanc_count);
+        return 1;
+    }
+    return 0;
+}
+
 
 int main () {
     T_Othellier var;
