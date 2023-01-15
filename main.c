@@ -108,7 +108,7 @@ int joueur_suivant (int joueur) {
         return 1;
     }
 }
-int isLowercase(char c) {
+int minuscule(char c) {
     if (c >= 'a' && c <= 'z') {
         return 1;
         }
@@ -124,12 +124,12 @@ void coordonnées_coup (T_plateau Taille, int *hor, int *ver, int joueur) {
     printf ("Choisissez une case (ex: A1) :\n");
     scanf ("\n%c", &c);
     /* On change les minuscules en majuscules */
-   if (isLowercase(c)==1){
+   if (minuscule(c)==1){
     c = c - 'a' + 'A';
    }
     (*hor) = c - 'A';
     scanf ("%d", ver);
-    (*ver)--;
+    (*ver)--; //pas compris demander à chat gpt
 }
 
 
