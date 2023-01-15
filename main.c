@@ -177,7 +177,16 @@ int main () {
 }
 
 
-/*test int main() {
+/*int partie_terminee(T_Othellier var) {
+if(!verifie_coup(var, 1) && !verifie_coup(var, 2)) {
+return 1;
+}
+else {
+return 0;
+}
+}
+
+int main() {
 T_Othellier othellier;
 init_Plateau(othellier);
 afficher_Plateau(othellier);
