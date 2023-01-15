@@ -175,3 +175,17 @@ int main () {
 
     return 0;
 }
+
+
+/*test int main() {
+T_Othellier othellier;
+init_Plateau(othellier);
+afficher_Plateau(othellier);
+int joueur = 1;
+while(!partie_terminee(othellier)) {
+// code pour jouer ici
+joueur = joueur_suivant(joueur);
+}
+printf("La partie est terminée");
+return 0;
+} */
