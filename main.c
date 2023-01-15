@@ -164,6 +164,47 @@ int partie_fini(T_Othellier var) {
     return 0;
 }
 
+void jouer_coup(T_Othellier var, int hor, int ver, int joueur) {
+    char adversaire;
+    if (joueur == 1) {
+        adversaire = N;
+    } else {
+        adversaire = B;
+    }
+    var[hor][ver] = adversaire;
+    for (int i=-1;i<=1;i++) {
+        for (int j=-1;j<=1;j++) {
+            if(i==0 && j==0) {
+                continue;
+            }
+            int x = hor + i, y = ver + j;
+            if (x<0||x>=Taille||y<0||y>=Taille) {
+                continue;
+            }
+            if (var[x][y] != adversaire) {
+                continue;
+            }
+            while (x >= 0 && x < Taille && y >= 0 && y < Taille) {
+                if (var[x][y] != adversaire) {
+                    break;
+                }
+                x = x + i;
+                y = y + j;
+            }
+            if (x >= 0 && x < Taille && y >= 0 && y < Taille && var[x][y] == adversaire) {
+                x = x - i;
+                y = y - j;
+                while (x != hor || y != ver) {
+                    var[x][y] = adversaire;
+                    x = x - i;
+                    y = y - j;
+                }
+            }
+        }
+    }
+}
+
+
 
 int main () {
     T_Othellier var;
@@ -177,24 +218,4 @@ int main () {
 }
 
 
-/*int partie_terminee(T_Othellier var) {
-if(!verifie_coup(var, 1) && !verifie_coup(var, 2)) {
-return 1;
-}
-else {
-return 0;
-}
-}
 
-int main() {
-T_Othellier othellier;
-init_Plateau(othellier);
-afficher_Plateau(othellier);
-int joueur = 1;
-while(!partie_terminee(othellier)) {
-// code pour jouer ici
-joueur = joueur_suivant(joueur);
-}
-printf("La partie est terminée");
-return 0;
-} */
