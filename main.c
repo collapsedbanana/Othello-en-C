@@ -205,17 +205,30 @@ void jouer_coup(T_Othellier var, int hor, int ver, int joueur) {
 }
 
 
+int main() {
+T_Othellier plateau;
+int joueur = 1;
+    init_Plateau(plateau);
+afficher_Plateau(plateau);
 
-int main () {
-    T_Othellier var;
+while(verifie_coup(plateau, joueur)) {
+    int hor, ver;
+    printf("Joueur %d, entrez la position horizontale: ", joueur);
+    scanf("%d", &hor);
+    printf("Joueur %d, entrez la position verticale: ", joueur);
+    scanf("%d", &ver);
 
+    if(mouv_valid(plateau, hor-1, ver-1, joueur)) {
+        // code to make the move
+    } else {
+        printf("Ce mouvement n'est pas valide, veuillez réessayer.\n");
+    }
 
-    /* Initialisation du jeu */
-    init_Plateau(var);
-    afficher_Plateau(var);
-
-    return 0;
+    joueur = joueur_suivant(joueur);
+    afficher_Plateau(plateau);
 }
+
+return 0;
 
 
 
