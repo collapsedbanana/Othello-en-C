@@ -117,21 +117,31 @@ int minuscule(char c) {
 
 }
 
-//avec le code ASCII, les majuscules sont de 65 à 90 et les minuscules de 97 à 122 on enlève 32 pour retourner à 90
-void coordonnées_coup (T_plateau Taille, int *hor, int *ver, int joueur) {
-     char c;
-    printf ("\nC'est au tour du joueur %d de jouer\n", joueur);
-    printf ("Choisissez une case (ex: A1) :\n");
-    scanf ("\n%c", &c);
-    /* On change les minuscules en majuscules */
-   if (minuscule(c)==1){
-    c = c - 'a' + 'A';
-   }
-    (*hor) = c - 'A';
-    scanf ("%d", ver);
-    (*ver)--; 
+void coordonnées_coup (T_Othellier Taille, int *hor, int *ver, int joueur) {
+    char c;
+    int input_valid = 0;
+    while (input_valid == 0) {
+        printf ("\nC'est au tour du joueur %d de jouer\n", joueur);
+        printf ("Choisissez une case (ex: A1) :\n");
+        scanf ("\n%c", &c);
+        /* On change les minuscules en majuscules */
+        if (minuscule(c)==1){
+            c = c - 'a' + 'A';
+        }
+        if (c >= 'A' && c <= 'H') {
+            (*hor) = c - 'A';
+            scanf ("%d", ver);
+            if (*ver >= 1 && *ver <= 8) {
+                (*ver)--;
+                input_valid = 1;
+            } else {
+                printf("Invalid input, please enter a number between 1 and 8\n");
+            }
+        } else {
+            printf("Invalid input, please enter a letter between A and H\n");
+        }
+    }
 }
-
 
 int main () {
     T_Othellier var;
