@@ -11,20 +11,28 @@
 /*
 //affiche le plateau avec les 4 premiers pions
 void init_Plateau (T_Othellier var);
+
 //affiche la grille et les lettres de A à H
 void afficher_Plateau (T_Othellier var);
+
 //permet de savoir si un mouvement est autorisé(case vide ou occupée)
 int mouv_valid(T_Othellier var, int hor, int ver, int joueur);
+
 //appel la fonction int mouv_valide pour voir si on peut encore déplacer un pion
 int verifie_coup(T_Othellier var, int joueur);
+
 //fait passer le tours au prochain joueur
 int joueur_suivant (int joueur);
+
 //permet de savoir si on entre une minuscule dans l'executable
 int minuscule(char c);
-//place les pions en fonction des coordonnées 
+
+//place les pions en fonction des coordonnées
 void coordonnees_coup (T_Othellier var, int *hor, int *ver, int joueur);
+
 //voit s'il reste encore des pions à joué du côté adverse et du joueur
 int partie_fini(T_Othellier var);
+
 //mais en place les rêgles de l'othello
 void jouer_coup(T_Othellier var, int hor, int ver, int joueur);
 */
@@ -242,22 +250,16 @@ void jouer_coup(T_Othellier var, int hor, int ver, int joueur) {
 int main() {
     T_Othellier plateau;
     int joueur = 1;
-    
+    int hor, ver;
+
     init_Plateau(plateau);
     afficher_Plateau(plateau);
 
-    while(partie_fini(plateau) == 0) {
-        int hor, ver;
-        printf("Joueur %d, entrez la position horizontale: ", joueur);
-        scanf("%d", &hor);
-        printf("Joueur %d, entrez la position verticale: ", joueur);
-        scanf("%d", &ver);
+    while( verifie_coup( ,joueur) == 1) {
+        coordonnees_coup(plateau, &hor, &ver, joueur);
 
         if(mouv_valid(plateau, hor-1, ver-1, joueur)) {
-            // code to make the move
-            void jouer_coup(T_Othellier var, int hor, int ver, int joueur);
-        } else {
-            printf("Ce mouvement n'est pas valide, veuillez réessayer.\n");
+            jouer_coup(plateau, hor-1, ver-1, joueur);
         }
 
         joueur = joueur_suivant(joueur);
