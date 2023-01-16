@@ -1,24 +1,26 @@
-#include <stdio.h>
-
 
 #define Taille 8
 
-#define N 'C'  /* joueur 1 */
-#define B 'O' /* joueur 2 */
+
+#define N '0'  /* vous commencez J1 */
+#define B 'O'
 
 #define VIDE ' '
 
+
+
 typedef char T_Othellier[Taille][Taille];
+
 
 
 void init_Plateau (T_Othellier var) {
     int i, j;
 
-    /* On met tout a vide */
+
     for (i=0; i<Taille; i++)
         for (j=0; j<Taille; j++)
             var[i][j] = VIDE;
-    // Place the initial pieces on the board
+
     var[3][3] = N;
     var[3][4] = B;
     var[4][3] = B;
@@ -30,14 +32,14 @@ void afficher_Plateau (T_Othellier var) {
     int i, j;
     char a = 'A';
 
-    /* Affichage des lettres */
+
     printf ("\n");
     for (i=0; i<Taille; i++) {
         printf ("  %c ", a);
         a++;
     }
 
-    
+
     printf ("\n+");
     for (i=0; i<Taille; i++)
         printf ("---+");
@@ -46,11 +48,11 @@ void afficher_Plateau (T_Othellier var) {
         printf ("|");
         for (j=0; j<Taille; j++)
             if (var[j][i] == B)
-                printf ("\033[37m %c \033[0m|", var[j][i]); /* Les blancs en blanc*/
+                printf ("\033[37m %c \033[0m|", var[j][i]);
             else
                 printf ("\033[31m %c \033[0m|", var[j][i]);
-                         /* Les noirs en rouge */
-        printf (" %d\n+", i+1); /* on affecte puis on incrémente*/
+
+        printf (" %d\n+", i+1);
         for (j=0; j<Taille; j++)
             printf ("---+");
         printf ("\n");
@@ -125,7 +127,7 @@ int est_adversaire_adjacent(T_Othellier tab , char j , int x , int y){
     return 0;
 }
 int peut_retourner(T_Othellier tab , char j , int x , int y){
-   
+
     int i , x_ , y_ , cont ,compte;
     int dir[8][2] = {
     { 0 , 1} ,
@@ -154,17 +156,18 @@ int peut_retourner(T_Othellier tab , char j , int x , int y){
                     return 1;
                 }
                 else{
+
                     cont = 0;
                 }
             }
-        
+
         }
-   
+
     }
     return 0;
 }
 int est_coup_valide (T_Othellier tab , char j , int x , int y){
-  
+
     if(tab[x][y]==VIDE){
         if (est_adversaire_adjacent(tab , j , x , y)){
            return peut_retourner( tab ,  j , x , y);
@@ -191,14 +194,7 @@ int verifie_coup(T_Othellier var, char joueur) {
     return 1;
 }
 
-int joueur_suivant (int joueur) {
-    if (joueur == 1) {
-        return 2;
-    }
-    else {
-        return 1;
-    }
-}
+
 
 int minuscule(char c) {
     if (c >= 'a' && c <= 'z') {
@@ -228,10 +224,10 @@ void coordonnees_coup (T_Othellier var, int *hor, int *ver, char joueur) {
                 (*ver)--;
                 input_valid = 1;
             } else {
-                printf("Invalid input, please enter a number between 1 and 8\n");
+                printf("Nombre incorrect, nombre doit être entre 1 et 8\n");
             }
         } else {
-            printf("Invalid input, please enter a letter between A and H\n");
+            printf("Lettre incorrect, veuillez donner une lettre entre A et H\n");
         }
     }
 
@@ -262,14 +258,14 @@ void jouer_coup(T_Othellier tab, int x, int y, char j){
     tab[x][y]=j;
     int i , x_ , y_ , cont ,compte;
     int dir[8][2] = {
-    { 0 , 1} ,
-    {0,-1 } ,
-    {1,0 },
+    {0,1} ,
+    {0,-1} ,
+    {1,0},
     {-1,0},
     {1,1},
     {-1,-1},
     {1,-1},
-    {-1,1 },
+    {-1,1},
     };
     for (i =0 ; i<8 ; i++){
         x_=x+dir[i][0];
@@ -324,3 +320,4 @@ int main() {
     }
     return 0;
 }
+
