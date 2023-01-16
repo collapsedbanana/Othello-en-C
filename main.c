@@ -1,47 +1,16 @@
 #include <stdio.h>
 
-/* Largeur de la grille */
+
 #define Taille 8
 
-/* Pions du jeu */
 #define N 'C'  /* joueur 1 */
 #define B 'O' /* joueur 2 */
 
 #define VIDE ' '
-/*
-//affiche le plateau avec les 4 premiers pions
-void init_Plateau (T_Othellier var);
 
-//affiche la grille et les lettres de A à H
-void afficher_Plateau (T_Othellier var);
-
-//permet de savoir si un mouvement est autorisé(case vide ou occupée)
-int mouv_valid(T_Othellier var, int hor, int ver, int joueur);
-
-//appel la fonction int mouv_valide pour voir si on peut encore déplacer un pion
-int verifie_coup(T_Othellier var, int joueur);
-
-//fait passer le tours au prochain joueur
-int joueur_suivant (int joueur);
-
-//permet de savoir si on entre une minuscule dans l'executable
-int minuscule(char c);
-
-//place les pions en fonction des coordonnées
-void coordonnees_coup (T_Othellier var, int *hor, int *ver, int joueur);
-
-//voit s'il reste encore des pions à joué du côté adverse et du joueur
-int partie_fini(T_Othellier var);
-
-//mais en place les rêgles de l'othello
-void jouer_coup(T_Othellier var, int hor, int ver, int joueur);
-*/
-
-/* Type du plateau de jeu */
 typedef char T_Othellier[Taille][Taille];
 
 
-/* Fonction pour initialiser la grille */
 void init_Plateau (T_Othellier var) {
     int i, j;
 
@@ -56,7 +25,7 @@ void init_Plateau (T_Othellier var) {
     var[4][4] = N;
 }
 
-/* Fonction pour afficher la grille */
+
 void afficher_Plateau (T_Othellier var) {
     int i, j;
     char a = 'A';
@@ -68,7 +37,7 @@ void afficher_Plateau (T_Othellier var) {
         a++;
     }
 
-    /* Affichage de la grille */
+    
     printf ("\n+");
     for (i=0; i<Taille; i++)
         printf ("---+");
@@ -156,7 +125,7 @@ int est_adversaire_adjacent(T_Othellier tab , char j , int x , int y){
     return 0;
 }
 int peut_retourner(T_Othellier tab , char j , int x , int y){
-   // printf("Peut retourner %d , %d ,%C \n",x,y,j);
+   
     int i , x_ , y_ , cont ,compte;
     int dir[8][2] = {
     { 0 , 1} ,
@@ -185,19 +154,17 @@ int peut_retourner(T_Othellier tab , char j , int x , int y){
                     return 1;
                 }
                 else{
-                 //   printf("cont<-0 , %d,%d\n",x_,y_);
                     cont = 0;
                 }
             }
-           // printf("%d , %d\n",compte,cont);
+        
         }
-       // printf("%d\n",i);
-    //    printf("%d,%d\n",x_,y_);
+   
     }
     return 0;
 }
 int est_coup_valide (T_Othellier tab , char j , int x , int y){
-  //  printf("appel fonction est coup valide %d , %d\n",x,y);
+  
     if(tab[x][y]==VIDE){
         if (est_adversaire_adjacent(tab , j , x , y)){
            return peut_retourner( tab ,  j , x , y);
@@ -337,43 +304,7 @@ void jouer_coup(T_Othellier tab, int x, int y, char j){
 
     }
 }
-/*
-void jouer_coup(T_Othellier var, int hor, int ver, char joueur) {
-    char adversaire;
-    adversaire =adv(joueur);
-    var[ver][hor] = adversaire;
-    for (int i=-1;i<=1;i++) {
-        for (int j=-1;j<=1;j++) {
-            if(i==0 && j==0) {
-                continue;
-            }
-            int x = ver + i, y = hor + j;
-            if (x<0||x>=Taille||y<0||y>=Taille) {
-                continue;
-            }
-            if (var[x][y] != adversaire) {
-                continue;
-            }
-            while (x >= 0 && x < Taille && y >= 0 && y < Taille) {
-                if (var[x][y] != adversaire) {
-                    break;
-                }
-                x = x + i;
-                y = y + j;
-            }
-            if (x >= 0 && x < Taille && y >= 0 && y < Taille && var[x][y] == adversaire) {
-                x = x - i;
-                y = y - j;
-                while (x != ver || y != hor) {
-                    var[x][y] = adversaire;
-                    x = x - i;
-                    y = y - j;
-                }
-            }
-        }
-    }
-}
-*/
+
 int main() {
     T_Othellier plateau;
     int joueur = N;
