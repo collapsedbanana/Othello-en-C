@@ -59,9 +59,7 @@ void afficher_Plateau (T_Othellier var) {
     }
 }
 
-int dans_plateau (int hor, int ver) {
-    return ((ver >= 0) && (ver < Taille) && (hor >= 0) && (hor < Taille));
-}
+
 int mouv_valid(T_Othellier var, int hor, int ver, int joueur) {
     int i, j;
     char adversaire;
