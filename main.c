@@ -40,12 +40,6 @@ void jouer_coup(T_Othellier var, int hor, int ver, int joueur);
 /* Type du plateau de jeu */
 typedef char T_Othellier[Taille][Taille];
 
-// typedef struct Coordonnees Coordonnees;
-// struct Coordonnees
-// {
-//     int x;
-//     char y;
-// };
 
 /* Fonction pour initialiser la grille */
 void init_Plateau (T_Othellier var) {
@@ -98,7 +92,7 @@ int mouv_valid(T_Othellier var, int hor, int ver, int joueur) {
     char adversaire;
             if(joueur == 1) adversaire = N;
         else adversaire = B;
-    
+
 
     for (i=-1;i<=1;i++) {
         for (j=-1;j<=1;j++) {
@@ -136,7 +130,7 @@ int verifie_coup(T_Othellier var, int joueur) {
             }
         }
     }
-    return 0;
+    return 1;
 }
 
 int joueur_suivant (int joueur) {
@@ -213,13 +207,13 @@ void jouer_coup(T_Othellier var, int hor, int ver, int joueur) {
     } else {
         adversaire = B;
     }
-    var[hor][ver] = adversaire;
+    var[ver][hor] = adversaire;
     for (int i=-1;i<=1;i++) {
         for (int j=-1;j<=1;j++) {
             if(i==0 && j==0) {
                 continue;
             }
-            int x = hor + i, y = ver + j;
+            int x = ver + i, y = hor + j;
             if (x<0||x>=Taille||y<0||y>=Taille) {
                 continue;
             }
@@ -236,7 +230,7 @@ void jouer_coup(T_Othellier var, int hor, int ver, int joueur) {
             if (x >= 0 && x < Taille && y >= 0 && y < Taille && var[x][y] == adversaire) {
                 x = x - i;
                 y = y - j;
-                while (x != hor || y != ver) {
+                while (x != ver || y != hor) {
                     var[x][y] = adversaire;
                     x = x - i;
                     y = y - j;
@@ -246,7 +240,6 @@ void jouer_coup(T_Othellier var, int hor, int ver, int joueur) {
     }
 }
 
-
 int main() {
     T_Othellier plateau;
     int joueur = 1;
@@ -255,12 +248,14 @@ int main() {
     init_Plateau(plateau);
     afficher_Plateau(plateau);
 
-while((verifie_coup(plateau, joueur)) {
-coordonnees_coup(plateau, &hor, &ver, joueur);
-if(mouv_valid(plateau, hor, ver, joueur)) {
-jouer_coup(plateau, hor, ver, joueur);
-}
-joueur = joueur_suivant(joueur);
-afficher_Plateau(plateau);
-}
+    while(partie_fini(plateau) != 1) {
+        do {
+            coordonnees_coup(plateau, &ver, &hor, joueur);
+        } while (verifie_coup( plateau, joueur) != 1);
+        jouer_coup(plateau, ver, hor, joueur);
+
+        joueur = joueur_suivant(joueur);
+        afficher_Plateau(plateau);
+    }
+    return 0;
 }
