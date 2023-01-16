@@ -1,3 +1,4 @@
+#include<stdio.h>
 
 #define Taille 8
 
