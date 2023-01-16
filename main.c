@@ -1,9 +1,8 @@
 #include<stdio.h>
-
 #define Taille 8
 
 
-#define N '0'  /* vous commencez J1 */
+#define N 'X'  /* vous commencez J1 */
 #define B 'O'
 
 #define VIDE ' '
@@ -212,9 +211,9 @@ void coordonnees_coup (T_Othellier var, int *hor, int *ver, char joueur) {
 
     while (input_valid == 0) {
         printf ("\nC'est au tour du joueur %c de jouer\n", joueur);
-        printf ("Choisissez une case (ex: A1) :\n");
+        printf ("Choisissez une case  :\n");
         scanf ("\n%c", &c);
-        /* On change les minuscules en majuscules */
+
         if (minuscule(c)==1) {
             c = c - 'a' + 'A';
         }
