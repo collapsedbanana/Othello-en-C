@@ -98,7 +98,7 @@ int mouv_valid(T_Othellier var, int hor, int ver, int joueur) {
     char adversaire;
             if(joueur == 1) adversaire = N;
         else adversaire = B;
-    int found = 0;
+    
 
     for (i=-1;i<=1;i++) {
         for (j=-1;j<=1;j++) {
@@ -255,16 +255,12 @@ int main() {
     init_Plateau(plateau);
     afficher_Plateau(plateau);
 
-    while( verifie_coup( ,joueur) == 1) {
-        coordonnees_coup(plateau, &hor, &ver, joueur);
-
-        if(mouv_valid(plateau, hor-1, ver-1, joueur)) {
-            jouer_coup(plateau, hor-1, ver-1, joueur);
-        }
-
-        joueur = joueur_suivant(joueur);
-        afficher_Plateau(plateau);
-    }
-
-    return 0;
+while((verifie_coup(plateau, joueur)) {
+coordonnees_coup(plateau, &hor, &ver, joueur);
+if(mouv_valid(plateau, hor, ver, joueur)) {
+jouer_coup(plateau, hor, ver, joueur);
+}
+joueur = joueur_suivant(joueur);
+afficher_Plateau(plateau);
+}
 }
