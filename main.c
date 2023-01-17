@@ -176,7 +176,7 @@ void coordonnees_coup (T_Othellier var, int *hor, int *ver, char joueur) {
 
     while (input_valid == 0) {
         printf ("\nC'est au tour du joueur %c de jouer\n", joueur);
-        printf ("Choisissez une case  :\n");
+        printf ("Choisissez une case(ex:A1)  :\n");
         scanf ("\n%c", &c);
 
         if (minuscule(c)==1) {
