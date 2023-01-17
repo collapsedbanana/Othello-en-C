@@ -189,7 +189,7 @@ void coordonnees_coup (T_Othellier var, int *hor, int *ver, char joueur) {
                 (*ver)--;
                 input_valid = 1;
             } else {
-                printf("Nombre incorrect, nombre doit être entre 1 et 8\n");
+                printf("Nombre incorrect, nombre doit etre entre 1 et 8\n");
             }
         } else {
             printf("Lettre incorrect, veuillez donner une lettre entre A et H\n");
