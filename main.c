@@ -60,40 +60,7 @@ void afficher_Plateau (T_Othellier var) {
 }
 
 
-int mouv_valid(T_Othellier var, int hor, int ver, int joueur) {
-    int i, j;
-    char adversaire;
-            if(joueur == 1) adversaire = N;
-        else adversaire = B;
 
-
-    for (i=-1;i<=1;i++) {
-        for (j=-1;j<=1;j++) {
-            if(i==0 && j==0) {
-                continue;
-            }
-                int x = hor + i, y = ver + j;
-                    if (x<0||x>=Taille||y<0||y>=Taille) {
-                        continue;
-        }
-                if (var[x][y]!=adversaire) {
-                        continue;
-        }
-
-        while(x>=0 && x<Taille && y>=0 && y<Taille) {
-            if (var[x][y]!=adversaire) {
-                break;
-            }
-                x=x+i;
-                y=y+j;
-            }
-                if (x>=0 && x<Taille && y>=0 && y<Taille && var[x][y]==adversaire) {
-                return 1;
-                }
-        }
-    }
-    return 0;
-}
 char adv(char j){
     if (j==N)
         return B;
