@@ -250,7 +250,6 @@ void jouer_coup(T_Othellier tab, int x, int y, char j){
                         x_=x_-dir[i][0];
                         y_=y_-dir[i][1];
                         tab[x_][y_]=j;
-                        printf("%d,%d |%d,%d\n",x_,y_,x,y);
                     }while(x_ != x || y_!= y);
                     cont=0;
 
